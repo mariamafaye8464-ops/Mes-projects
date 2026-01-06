@@ -24,9 +24,10 @@ def ajouter_cycle(liste_cycles):
     nb_jours=int(input("Nombre de jours d'elevage : "))
     nb_poulets_vendus=int(input("Nombre de poulets vendus : "))
     prix_vente_unitaire=float(input("Prix de vente unitaire (FCFA) : "))
-    benefice=int(input("Benefice (FCFA) :"))
-    taux_retour=float(input(" Taux de retour :" ))
-    taux_mortalite=float(input("Taux de mortalite :"))
+    # calcule directement ces valeur en ecrivant d'autre fonction qui afffecteront la valeur correspondante a la variable
+    # benefice=int(input("Benefice (FCFA) :"))
+    # taux_retour=float(input(" Taux de retour :" ))
+    # taux_mortalite=float(input("Taux de mortalite :"))
     evaluation=str(input("Evaluation  :" ))
 
     cycle = {
@@ -39,9 +40,9 @@ def ajouter_cycle(liste_cycles):
         "nb_jours":nb_jours,
         "nb_poulets_vendus":nb_poulets_vendus,
         "prix_vente_unitaire":prix_vente_unitaire,
-        "benefice":benefice,
-        "taux_retour":taux_retour,
-        "taux_mortalite": taux_mortalite,
+        # "benefice":benefice,
+        # "taux_retour":taux_retour,
+        # "taux_mortalite": taux_mortalite,
         "evaluation":evaluation,
     }
     liste_cycles.append(cycle)
@@ -84,175 +85,17 @@ def evaluer_rentabilite(taux_retour):
         return "Faible"
     else:
         return "Perte"
-#stoke toutes ces informations dans une liste
-cycle = {
-'nom': "Cycle Mars 2024",
-'nb_poussins': 500,
-'prix_poussin': 520,
-'cout_aliment': 800000,
-'cout_vaccins': 50000,
-'autres_couts': 100000,
-'jours_elevage': 45,
-'nb_vendus': 485,
-'prix_vente': 3500,
-'cout_total': 1210000,
-'revenu': 1697500,
-'benefice': 487500,
-'taux_mortalite': 3.0,
-'taux_retour': 40.29,
-'evaluation': "Bon"
-}
 def afficher_tous_cycles(liste_cycles):
 #Affiche tous les cycles enregistres"""
 # Votre code ici
     if len(liste_cycles) == 0 :
         print("Aucun cycle enregistre")
         return
+    print("\n=== TOUS LES CYCLES D'ELEVAGE ===")
+    print("Nom       Nombre de poussins      Benefice (FCFA)     Taux de retour (%)     Taux de mortalite (%)    Evaluation")
     for cycle in liste_cycles :
-        print(f"{cycle['nom']} , {cycle['nb_poussins']},{cycle['benefice']}, {cycle['taux_retour']} ,{cycle['taux_mortalite']} {cycle['evaluation']}")
+        print(f"{cycle['nom']}       {cycle['nb_poussins']}       {cycle['benefice']}       {cycle['taux_retour']}       {cycle['taux_mortalite']}       {cycle['evaluation']}")
 
-
-def test_simple():
-
-    """Teste le programme avec des donnees predefinies"""
-
-    
-
-    # Liste pour stocker les cycles
-
-    cycles = []
-
-    
-
-    # Cycle 1 - Bon benefice
-
-    cycle1 = {
-
-        'nom': "Cycle Mars 2024",
-
-        'nb_poussins': 500,
-
-        'prix_poussin': 520,
-
-        'cout_aliment': 800000,
-
-        'cout_vaccins': 50000,
-
-        'autres_couts': 100000,
-
-        'jours_elevage': 45,
-
-        'nb_vendus': 485,
-
-        'prix_vente': 3500,
-
-        'cout_total': 1210000,
-
-        'revenu': 1697500,
-
-        'benefice': 487500,
-
-        'taux_mortalite': 3.0,
-
-        'taux_retour': 40.29,
-
-        'evaluation': "Bon"
-
-    }
-
-    
-
-    # Cycle 2 - Excellent benefice
-
-    cycle2 = {
-
-        'nom': "Cycle Avril 2024",
-
-        'nb_poussins': 500,
-
-        'prix_poussin': 520,
-
-        'cout_aliment': 750000,
-
-        'cout_vaccins': 50000,
-
-        'autres_couts': 90000,
-
-        'jours_elevage': 45,
-
-        'nb_vendus': 490,
-
-        'prix_vente': 3600,
-
-        'cout_total': 1150000,
-
-        'revenu': 1764000,
-
-        'benefice': 614000,
-
-        'taux_mortalite': 2.0,
-
-        'taux_retour': 53.39,
-
-        'evaluation': "Excellent"
-
-    }
-
-    
-
-    # Cycle 3 - Faible benefice
-
-    cycle3 = {
-
-        'nom': "Cycle Mai 2024",
-
-        'nb_poussins': 500,
-
-        'prix_poussin': 520,
-
-        'cout_aliment': 850000,
-
-        'cout_vaccins': 55000,
-
-        'autres_couts': 120000,
-
-        'jours_elevage': 45,
-
-        'nb_vendus': 470,
-
-        'prix_vente': 3400,
-
-        'cout_total': 1285000,
-
-        'revenu': 1598000,
-
-        'benefice': 313000,
-
-        'taux_mortalite': 6.0,
-
-        'taux_retour': 24.36,
-
-        'evaluation': "Faible"
-
-    }
-
-    
-
-    # Ajouter les cycles a la liste
-
-    cycles.append(cycle1)
-
-    cycles.append(cycle2)
-
-    cycles.append(cycle3)
-
-    
-
-    # Afficher les cycles (remplacer par votre fonction)
-
-    print("\n=== TEST DE L'AFFICHAGE DES CYCLES ===")
-
-    afficher_tous_cycles(cycles)
 
 def afficher_statistiques(liste_cycles):
 #Calcule et affiche les statistiques globales
@@ -268,10 +111,10 @@ def afficher_statistiques(liste_cycles):
         cycles_non_rentables = total_cycles - cycles_rentables
         taux_reussite = (cycles_rentables / total_cycles) * 100
 
-        print("\n=== TEST DES STATISTIQUES ===")
+        print("\n=== STATISTIQUES ===")
 
     # afficher_statistiques(cycles)
-        print("Nombre total de cycles :", cycle)
+        # print("Nombre total de cycles :", cycle)
         print("Benefice total :", benefice_total, "FCFA")
         print("Benefice moyen :", round(benefice_moyen, 2), "FCFA")
         print("Taux de mortalite moyen :", round(mortalite_moyenne, 2), "%")
