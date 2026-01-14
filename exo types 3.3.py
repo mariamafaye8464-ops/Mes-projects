@@ -1,0 +1,18 @@
+fruits=["pomme","banane","orange"]
+# 1. Ajouter "fraise" à la fin avec .append()
+fruits.append("fraise")
+print(fruits)
+# 2. Insérer "kiwi" en position 1 avec .insert()
+fruits.insert(1,"kiwi")
+print(fruits)
+# 3. Retirer "banane" avec .remove()
+fruits.remove("banane")
+print(fruits)
+# 4. Trier la liste avec .sort()
+fruits.sort()
+print(fruits)
+# 5. Afficher le nombre d'éléments avec len()
+print(len(fruits))
+# 6. Accéder au premier et dernier élément
+print(fruits[0])
+print(fruits[-1])
